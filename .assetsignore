@@ -1,0 +1,12 @@
+.dev.vars
+.dev.vars.example
+.wrangler/
+.wrangler-*.log
+node_modules/
+.htaccess
+.user.ini
+.well-known/
+# 第三方统计/挂件脚本（已从 index.html 移除引用，双保险排除）
+files/hm.js
+files/js-sdk-pro.min.js
+files/widgets.min.js

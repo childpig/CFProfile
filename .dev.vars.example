@@ -1,0 +1,49 @@
+# ===== 环境变量配置示例（复制为 .dev.vars 后修改）=====
+# 所有配置汇总为「一个」变量 SITE_CONFIG（JSON 对象），字段都可留空。
+#
+# 两种注入方式：
+#   本地开发   复制本文件为 .dev.vars（wrangler pages dev 自动读取，不会上传）
+#   线上部署   GitHub 仓库 Git 集成项目，在 Cloudflare 面板管理：
+#              Pages -> cfprofile -> Settings -> Environment variables -> Production
+#              填入 SITE_CONFIG，改完到 Deployments 页面对最新部署点 Redeploy 生效。
+#
+# 更简单的方式：打开网站，点页脚的齿轮「设置」，
+# 在面板里可视化编辑各个项目 -> 点「导出值」-> 复制 JSON，
+# 粘贴到面板的 SITE_CONFIG 变量即可。之后想改，
+# 在设置里点「导入值」把 JSON 粘回去，分解成各个字段继续编辑。
+
+SITE_CONFIG='{
+  "SITE_NAME": "我的网站",
+  "SITE_SUBTITLE": "CHILDPIG",
+  "SITE_DESCRIPTION": "一个简洁的个人主页",
+  "SITE_FOOTER": "",
+  "FAVICON_URL": "https://example.com/favicon.png",
+  "SITE_URL": "https://example.com",
+  "SITE_LINKS": [
+    {"title": "博客", "desc": "分享个人生活与各类精品资源", "url": "https://blog.example.com/", "icon": ""},
+    {"title": "监控平台", "desc": "监控所有服务器及网站运营情况", "url": "https://tz.example.com/", "icon": ""}
+  ],
+  "GITHUB_URL": "https://github.com/yourname",
+  "EMAIL": "yourname@example.com",
+  "DONATE_URL": "",
+  "BILIBILI_URL": "https://space.bilibili.com/123456",
+  "WECHAT_QR_URL": "https://example.com/wechat.png"
+}'
+
+# 字段说明：
+#   SITE_NAME        网站名（标题 / 欢迎语 / 页脚 / og:title）
+#   SITE_SUBTITLE    副标题（欢迎语里网站名后面，渐变色显示；留空则只显示网站名）
+#   SITE_DESCRIPTION 网站介绍（description / og:description）
+#   SITE_FOOTER     页脚文字（留空则显示「网站名 © 年份」）
+#   FAVICON_URL      网站图标外链（同时用作 og:image；留空则不输出图标标签）
+#   SITE_URL         本站完整地址（用于 og:url，如 https://example.com）
+#   SITE_LINKS       网址区域，数组，字段 title / desc / url / icon（icon 可留空）；
+#                    未配置时显示两条示例卡片
+#   GITHUB_URL       GitHub 主页链接（留空则图标只展示、点击不跳转）
+#   EMAIL            邮箱地址（自动补 mailto:）
+#   DONATE_URL       捐赠 / 打赏链接
+#   BILIBILI_URL     B 站空间链接
+#   WECHAT_QR_URL    微信二维码图片外链（有值才弹窗，无值时微信图标点击无反应）
+#
+# 社交图标（GitHub / 邮箱 / 捐赠 / 微信 / B站）始终显示，
+# 对应链接没配时只是展示、点击不跳转。
